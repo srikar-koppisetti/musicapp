@@ -1,0 +1,15 @@
+<div class="search-results">
+    <form>
+        <div class="row">
+            <div class="col-10">
+                <input type="text" #searchItemInput class="form-control form-control-lg " id="inlineFormInput"
+                    placeholder="Artist, Song, Album..." [formControl]="searchItem">
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-lg btn-primary button-search"
+                    (click)="searchItemResult(); searchItemInput.value=''"><span *ngIf="!dataLoading">Search</span><span
+                        *ngIf="dataLoading">Searching...</span></button>
+            </div>
+        </div>
+    </form>
+</div>

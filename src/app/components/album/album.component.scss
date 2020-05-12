@@ -1,0 +1,36 @@
+.album {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.album-image {
+    width: 200px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    @media screen and (max-width: 450px) {
+        width: 150px;
+    }
+}
+
+.album-details{
+    margin-top: 30px;
+}
+
+.album-name {
+    margin-top: 10px;
+}
+
+
+
+.album-tracks {
+    border: 1px gray solid;
+    margin: 0px 0px 10px 0px;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.album-track{
+    font-weight: 500;
+    cursor: pointer;
+}

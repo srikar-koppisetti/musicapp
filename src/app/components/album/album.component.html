@@ -1,0 +1,40 @@
+<div class="container album">
+    <div *ngIf="displayAlbum">
+        <div class="row">
+            <div class="col-11">
+                    <h1>{{album.collectionName}}</h1>
+            </div>
+            <div class="col-1">
+                    <app-favourite (click)="pushFavAlbum()" [favArtist]=favouriteAlbum></app-favourite>
+            </div>
+        </div>
+        <div class="row album-details">
+            <div class="col-md-3">
+                <img class="album-image" src="{{album.artworkUrl100}}" alt="album.collectionName"
+                    (click)="goToArtist(tracks[0].artistId)">
+                <div class="album-name">
+                    <h6>{{tracks[0].artistName}}</h6>
+                </div>
+            </div>
+            <div class="col-md-9 tracks">
+                <h2>Tracks</h2>
+                <div class="row album-tracks" *ngFor="let track of tracks; let i = index;">
+                    <div class="col-md-9">
+                        <span class="album-track">
+                            <a href="{{track.previewUrl}}">{{track.trackName}}</a>
+                        </span>
+                    </div>
+                    <div class="col-md-1">
+                            <span>{{track.trackTimeMillis | date:'mm:ss'}}</span>
+                        </div>
+                    <div class="col-md-1">
+                        <span>{{track.trackPrice | currency: 'USD'}}</span>
+                    </div>
+                    <div class="col-md-1">
+                            <app-favourite (click)="pushFavTrack(i)" [favArtist]=favouriteTracks[i]></app-favourite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

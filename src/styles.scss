@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%
+}
+
+.card-text {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-img-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.card-img-wrap:after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.3);
+  opacity: 0;
+  transition: opacity .25s;
+}
+.card-img-wrap img {
+  transition: transform .25s;
+  width: 100%;
+}
+.card-img-wrap:hover img {
+  transform: scale(1.2);
+}
+.card-img-wrap:hover:after {
+  opacity: 1;
+}

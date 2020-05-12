@@ -1,0 +1,20 @@
+<div class="container-fluid" *ngIf="allFavourites.length > 0">
+    <div class="row artist-details">
+        <div class="col-md-12">
+            <h3>Favourites</h3>
+            <div class="row artist-details">
+                <div class="col-sm-2 album-cards" *ngFor="let favItem of allFavourites">
+                    <div class="card">
+                        <div class="card-img-wrap">
+                            <img src="{{favItem.favImage}}" class="card-img-top" alt="favItem.favTitle">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-fav-title">{{favItem.favTitle}}</p>
+                            <p class="card-fav-type">{{favItem.wrapperType | titlecase}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

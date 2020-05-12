@@ -1,0 +1,25 @@
+.artist {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.artist-image {
+    width: 200px;
+    border-radius: 5px;
+
+    @media screen and (max-width: 450px) {
+        width: 150px;
+    }
+}
+
+.artist-details{
+    margin-top: 30px;
+}
+
+.artist-name {
+    margin-top: 10px;
+}
+
+.album-cards {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,6 @@
+
+<div class="container-fluid" *ngIf="recentSearchItems != null && recentSearchItems.length > 0">
+        <h3>Recent Searchs</h3>
+        <span class="badge badge-primary recent-search" *ngFor="let item of recentSearchItems">{{item | titlecase}}</span>
+        <hr>
+</div>

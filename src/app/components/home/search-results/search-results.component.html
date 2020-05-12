@@ -1,0 +1,71 @@
+<div class="container-fluid search-results" *ngIf="!!searchResults">
+    <div class="search-artists">
+        <h3>Artists</h3>
+        <div id="carouselArtistsControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div *ngFor="let chunk of getChunk(searchResults.artists); let i = index;" [ngClass]="{
+                                        'carousel-item' : true,
+                                        'active': i <= 0
+                                    }">
+                    <div class="row">
+                        <div class="col-sm-2" *ngFor="let value of chunk">
+                            <div class="card" (click)="getArtist(value.artistId)">
+                                <div class="card-img-wrap">
+                                    <img src="{{value.artworkUrl100}}" class="card-img-top" alt="value.artistName">
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">{{value.artistName}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselArtistsControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselArtistsControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            <hr>
+        </div>
+    </div>
+    <div class="search-albums">
+        <h3>Albums</h3>
+        <div id="carouselAlbumsControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div *ngFor="let chunk of getChunk(searchResults.albums); let i = index;" [ngClass]="{
+                                'carousel-item' : true,
+                                'active': i <= 0
+                            }">
+                    <div class="row">
+                        <div class="col-sm-2" *ngFor="let value of chunk">
+                            <div class="card" (click)="getAlbum(value.collectionId)">
+                                <div class="card-img-wrap">
+                                    <img src="{{value.artworkUrl100}}" class="card-img-top" alt="value.collectionName">
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">{{value.collectionName}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselAlbumsControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselAlbumsControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <hr>
+    </div>
+</div>
+
+<!-- [routerLink]="['/artist']" [queryParams]="{ artistId: 'value.artistId' }" -->

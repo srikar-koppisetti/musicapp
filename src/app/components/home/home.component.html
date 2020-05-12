@@ -1,0 +1,4 @@
+<app-search (searchComponentEvent)="updateSearchResults($event)" (searchItemEvent)="updateSearchItem($event)"></app-search>
+<app-search-results [searchResults]="searchResults"></app-search-results>
+<app-recent-search [searchItem]="searchItem"></app-recent-search>
+<app-favourites></app-favourites>

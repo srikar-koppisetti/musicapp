@@ -1,0 +1,33 @@
+<div class="container artist">
+    <div *ngIf="displayArtist">
+        <div class="row">
+            <div class="col-md-11">
+                <h1>{{artist.artistName}}</h1>
+            </div>
+            <div class="col-md-1">
+                <app-favourite (click)="pushFavArtist()" [favArtist]=favouriteArtist></app-favourite>
+            </div>
+        </div>
+        <div class="row artist-details">
+            <div class="col-md-3">
+                <img class="artist-image" src="{{artist.artworkUrl100}}" alt="artist.artistName">
+            </div>
+            <div class="col-md-9">
+                <h2>Albums</h2>
+                <div class="row artist-details">
+                    <div class="col-sm-3 album-cards" *ngFor="let album of albums"
+                        (click)="goToAlbum(album.collectionId)">
+                        <div class="card">
+                            <div class="card-img-wrap">
+                                <img src="{{album.artworkUrl100}}" class="card-img-top" alt="album.collectionName">
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{album.collectionName}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
