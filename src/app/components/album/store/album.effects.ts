@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AlbumEffect {
@@ -20,12 +21,11 @@ export class AlbumEffect {
                     });
                 }),
                 catchError(resError => {
-                    if (!resError) {
-                        return of(new AlbumActions.AlbumError('No data found'));
-                    }
+                    this.router.navigate(['/page-not-found']);
+                    return of(new AlbumActions.AlbumError('No data found'));
                 })
             );
         })
     );
-    constructor(private actions$: Actions, private http: HttpClient) {}
+    constructor(private actions$: Actions, private http: HttpClient, private router: Router) { }
 }

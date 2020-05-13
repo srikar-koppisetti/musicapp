@@ -20,7 +20,6 @@ export class ArtistEffect {
                     });
                 }),
                 catchError(resError => {
-                    // console.log(resError);
                     this.router.navigate(['/page-not-found']);
                     return of(new ArtistAction.ArtistError('No data found'));
                 })
