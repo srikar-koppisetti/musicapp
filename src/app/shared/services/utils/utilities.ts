@@ -1,3 +1,4 @@
+// used to split an array into a specific chunk size
 export function chunk(inputArray: any[], chunkSize: number): any[] {
     let index = 0;
     const arrayLength = inputArray.length;

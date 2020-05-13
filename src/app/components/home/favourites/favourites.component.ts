@@ -18,6 +18,7 @@ export class FavouritesComponent implements OnInit {
     this.getAllFavourites();
   }
 
+  // gets all favourite songs artists albums from local storage
   getAllFavourites(): void {
     this.allFavourites = this.localStorageSvc.get(LocalStorageItems.favorites);
   }

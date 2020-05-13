@@ -1,11 +1,10 @@
 import { Actions, ofType, Effect } from '@ngrx/effects';
 import * as ArtistAction from './artist.action';
 import { switchMap, catchError, map, tap } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/shared/services/api/api.service';
 
 @Injectable()
 export class ArtistEffect {
@@ -13,7 +12,7 @@ export class ArtistEffect {
     searchResult = this.actions$.pipe(
         ofType(ArtistAction.ARTIST_ITEM),
         switchMap((artistItem: ArtistAction.ArtistIteam) => {
-            return this.http.get<any>(`${environment.appleApiUrl}/lookup?id=${artistItem.payload.artistItem}&entity=album`).pipe(
+            return this.restService.getArtistResult(artistItem.payload.artistItem).pipe(
                 map(resData => {
                     return new ArtistAction.ArtistSuccess({
                         artistResult: resData
@@ -27,5 +26,7 @@ export class ArtistEffect {
         })
     );
 
-    constructor(private actions$: Actions, private http: HttpClient, public router: Router) { }
+    constructor(private actions$: Actions,
+                public router: Router,
+                private restService: ApiService) { }
 }

@@ -25,6 +25,7 @@ export class RecentSearchComponent implements OnInit {
     this.updateResentSearchItems();
   }
 
+  // gets all recent search items from local storage
   updateResentSearchItems(): void {
     this.recentSearchItems = this.localStorageService.get(LocalStorageItems.recentSearches);
   }

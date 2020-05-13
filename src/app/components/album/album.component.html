@@ -1,5 +1,7 @@
+<!-- album pagw where we display album, artist details and tracks under an album -->
 <div class="container album">
     <div *ngIf="displayAlbum">
+        <!-- Album name and mark favourite -->
         <div class="row">
             <div class="col-11">
                     <h1>{{album.collectionName}}</h1>
@@ -9,6 +11,7 @@
             </div>
         </div>
         <div class="row album-details">
+            <!-- artist destils -->
             <div class="col-md-3">
                 <img class="album-image" src="{{album.artworkUrl100}}" alt="album.collectionName"
                     (click)="goToArtist(tracks[0].artistId)">
@@ -16,6 +19,7 @@
                     <h6>{{tracks[0].artistName}}</h6>
                 </div>
             </div>
+            <!-- Tracks under an album -->
             <div class="col-md-9 tracks">
                 <h2>Tracks</h2>
                 <div class="row album-tracks" *ngFor="let track of tracks; let i = index;">

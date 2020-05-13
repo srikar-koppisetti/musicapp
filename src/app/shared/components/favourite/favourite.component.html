@@ -1,3 +1,4 @@
+<!-- Favourite component shared across artist, album and tracks -->
 <fa-icon *ngIf="!favArtist?.isFavourite"  class="slider-icon" [icon]="faRegHeart" size="{{size}}"
     [styles]="{'stroke': 'red', 'color': 'red', 'cursor': 'pointer'}"></fa-icon>
 <fa-icon *ngIf="favArtist?.isFavourite" class="slider-icon" [icon]="faHeart" size="{{size}}"

@@ -44,6 +44,7 @@ export class ArtistComponent implements OnInit, OnDestroy {
     this.getArtist(this.artistId);
   }
 
+  // gets all the data needs to be displayed in artist page from store
   getArtist(artistId: string): void {
     this.store.dispatch(new ArtistActions.ArtistIteam({ artistItem: artistId }));
     this.artistSub = this.store.select('artist').pipe().subscribe(
@@ -68,35 +69,15 @@ export class ArtistComponent implements OnInit, OnDestroy {
           }
         }
       }
-      // this.artistSub = this.apiService.getArtistResult(+artistId).subscribe(
-      //   (data) => {
-      //     if (data.resultCount < 2) {
-      //       this.router.navigate(['/page-not-found']);
-      //     }
-      //     if (data.results[0].wrapperType === WrapperType.artist && data.resultCount >= 2) {
-      //       this.displayArtist = true;
-      //       const response = data.results;
-      //       this.artist = {
-      //         wrapperType: response[0].wrapperType,
-      //         artistId: response[0].artistId,
-      //         artistName: response[0].artistName,
-      //         artworkUrl100: response[1].artworkUrl100
-      //       };
-      //       this.albums = response.splice(1);
-      //       this.checkIsFavourite();
-      //     }
-      //   },
-      //   (error) => {
-      //     this.router.navigate(['/page-not-found']);
-      //     console.log(error);
-      //   }
     );
   }
 
+  // on selecting one of the artist on the view. It redirects to album page with album id
   goToAlbum(id: number): void {
     this.router.navigate(['/album'], { queryParams: { collectionId: id } });
   }
 
+  // checks if the artist is favourite from local storage
   checkIsFavourite() {
     if (!!this.artist) {
       this.favouriteArtist = {
@@ -110,6 +91,7 @@ export class ArtistComponent implements OnInit, OnDestroy {
     }
   }
 
+  // on marking artist as favourite, pushes artist data to favourites in local storage
   pushFavArtist(): void {
     if (this.favouriteArtist.isFavourite) {
       this.favouriteArtist.isFavourite = false;

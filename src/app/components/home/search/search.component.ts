@@ -32,12 +32,14 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.getMostRecentSearch();
   }
 
+  // on search form submit
   searchItemResult(): void {
     this.dataLoading = true;
     const searchItemValue = this.searchItem.value;
     this.getSearchResults(searchItemValue);
   }
 
+  // use the input value and get data using store and creates artists and albums object to display
   getSearchResults(searchItemValue: string) {
     this.searchItemEvent.emit(searchItemValue);
     this.store.dispatch(new SearchActions.SearchItem({ searchItem: searchItemValue }));
@@ -78,6 +80,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     );
   }
 
+  // fetches most recent search from local storage where we store all recent search results
   getMostRecentSearch() {
     const mostRecentSearchItems = this.localStorageSvc.get(LocalStorageItems.recentSearches);
     if (!!mostRecentSearchItems && mostRecentSearchItems.length >= 1) {

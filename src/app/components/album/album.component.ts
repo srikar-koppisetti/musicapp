@@ -44,6 +44,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
     this.getAlbums(this.collectionId);
   }
 
+  // gets album information and tracks under the album from store
   getAlbums(collectionId: string) {
     this.store.dispatch(new AlbumActions.AlbumItem({ albumItem: collectionId }));
     this.albumSub = this.store.select('album').subscribe(
@@ -71,33 +72,9 @@ export class AlbumComponent implements OnInit, OnDestroy {
         }
       }
     );
-
-    // this.albumSub = this.apiService.getAlbumResults(+collectionId).subscribe(
-    //   (data) => {
-    //     if (data.resultCount < 2) {
-    //       this.router.navigate(['/page-not-found']);
-    //     }
-    //     if (data.results[0].wrapperType === WrapperType.collection && data.resultCount >= 2) {
-    //       this.displayAlbum = true;
-    //       const response = data.results;
-    //       this.album = {
-    //         wrapperType: response[0].wrapperType,
-    //         collectionId: response[0].collectionId,
-    //         collectionName: response[0].collectionName,
-    //         artworkUrl100: response[1].artworkUrl100
-    //       };
-    //       this.tracks = response.splice(1);
-    //       this.checkIsFavourite();
-    //       this.checkFavouriteTracks();
-    //     }
-    //   },
-    //   (error) => {
-    //     this.router.navigate(['/page-not-found']);
-    //     console.log(error);
-    //   }
-    // );
   }
 
+  // check if the album is favourite
   checkIsFavourite(): void {
     if (!!this.album) {
       this.favouriteAlbum = {
@@ -111,6 +88,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
     }
   }
 
+  // check for all the tracks which are favourite
   checkFavouriteTracks(): void {
     for (const track of this.tracks) {
       const favTrack = {
@@ -125,6 +103,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
     }
   }
 
+  // push favourite album to list of favourites in local storage
   pushFavAlbum(): void {
     if (this.favouriteAlbum.isFavourite) {
       this.favouriteAlbum.isFavourite = false;
@@ -134,6 +113,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
     this.localStorageSvc.updateFavourites(this.favouriteAlbum);
   }
 
+  // push favourite tracks to list of favourites in local storage
   pushFavTrack(id: number): void {
     if (this.favouriteTracks[id].isFavourite) {
       this.favouriteTracks[id].isFavourite = false;
@@ -143,6 +123,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
     this.localStorageSvc.updateFavourites(this.favouriteTracks[id]);
   }
 
+  // on clicking on artist thumbnail app will redirect to artist page with artist id
   goToArtist(id: number): void {
     this.router.navigate(['/artist'], { queryParams: { artistId: id } });
   }

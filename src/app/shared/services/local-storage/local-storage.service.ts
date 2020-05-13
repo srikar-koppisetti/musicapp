@@ -10,10 +10,12 @@ export class LocalStorageService {
 
   constructor() { }
 
+  // creates an item in local storage
   create(item: LocalStorageItems): void {
     localStorage.setItem(item, '[]');
   }
 
+  // updates the local storage with all recent searches
   update(item: LocalStorageItems, value: string): void {
     if (localStorage.getItem(item) && !!value) {
       const arr = JSON.parse(localStorage.getItem(item));
@@ -33,7 +35,7 @@ export class LocalStorageService {
     }
   }
 
-
+  // updates local storage with all favourite songs, albums and artists selected
   updateFavourites(value: IFavourite) {
     const lsKey = LocalStorageItems.favorites;
     if (localStorage.getItem(lsKey) && !!value) {
@@ -62,6 +64,7 @@ export class LocalStorageService {
     }
   }
 
+  // checks if a value is favourite or not
   isFavourite(value: string): boolean {
     const arr = JSON.parse(localStorage.getItem(LocalStorageItems.favorites));
     if (!!arr) {
@@ -74,6 +77,7 @@ export class LocalStorageService {
     return false;
   }
 
+  // gets the values from local storage
   get(item: LocalStorageItems): any[] {
     const arr = JSON.parse(localStorage.getItem(item));
     return arr;

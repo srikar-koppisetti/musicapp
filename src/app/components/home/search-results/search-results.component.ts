@@ -19,14 +19,17 @@ export class SearchResultsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // splits the cards into chunks of 6 in-order to display in corosol
   getChunk(values: any): any[] {
     return chunk(values, 6);
   }
 
+  // redirect to album page with album id
   getAlbum(id: number): void {
     this.router.navigate(['/album'], { queryParams: { collectionId: id } });
   }
 
+  // redirect to artist page with artist id
   getArtist(id: number): void {
     this.router.navigate(['/artist'], { queryParams: { artistId: id } });
   }

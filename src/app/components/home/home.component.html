@@ -1,4 +1,6 @@
-<app-search (searchComponentEvent)="updateSearchResults($event)" (searchItemEvent)="updateSearchItem($event)"></app-search>
+<!-- Home component is a parent where Search form, search results, recent search and favourites are child components -->
+<app-search (searchComponentEvent)="updateSearchResults($event)" (searchItemEvent)="updateSearchItem($event)">
+</app-search>
 <app-search-results [searchResults]="searchResults"></app-search-results>
 <app-recent-search [searchItem]="searchItem"></app-recent-search>
 <app-favourites></app-favourites>

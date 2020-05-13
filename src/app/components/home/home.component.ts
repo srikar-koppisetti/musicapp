@@ -16,10 +16,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Gets search results from child component app-search
   updateSearchResults(message: IHttpSearchItemResponse) {
     this.searchResults = message;
   }
 
+  // Gets search item from child component app-search
   updateSearchItem(message: string) {
     this.searchItem = message;
   }

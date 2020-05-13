@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  appleApiUrl: 'https://itunes.apple.com'
 };

@@ -9,6 +9,8 @@ import { LocalStorageService } from '../../services/local-storage/local-storage.
   templateUrl: './favourite.component.html',
   styleUrls: ['./favourite.component.scss']
 })
+
+// currently favourites are saved in local storage. Ideal way is to save is using a middleware.
 export class FavouriteComponent implements OnInit {
 
   public faRegHeart  = faRegHeart;
@@ -21,14 +23,14 @@ export class FavouriteComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // check if the marked artist, album and track is favourite or not
   checkIfExists() {
     this.favArtist.isFavourite = this.localStorageSvc.isFavourite(this.favArtist.favId);
-    console.log(this.favArtist);
   }
 
+  // update marked artist, album and track as favourite
   updateFav() {
     this.localStorageSvc.updateFavourites(this.favArtist);
-    console.log(this.favArtist);
   }
 
 }

@@ -1,5 +1,7 @@
+<!-- Displays artist and albums belonging to artist -->
 <div class="container artist">
     <div *ngIf="displayArtist">
+        <!-- Artist name and mark favourite -->
         <div class="row">
             <div class="col-md-11">
                 <h1>{{artist.artistName}}</h1>
@@ -9,9 +11,11 @@
             </div>
         </div>
         <div class="row artist-details">
+            <!-- Artist thumbnail -->
             <div class="col-md-3">
                 <img class="artist-image" src="{{artist.artworkUrl100}}" alt="artist.artistName">
             </div>
+            <!-- Albums of the artist -->
             <div class="col-md-9">
                 <h2>Albums</h2>
                 <div class="row artist-details">

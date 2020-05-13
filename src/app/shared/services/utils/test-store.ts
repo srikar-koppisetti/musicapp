@@ -1,5 +1,6 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 
+// Test Store class for mocking store in unit tests
 export class TestStore<T> {
   private state: BehaviorSubject<T> = new BehaviorSubject(undefined);
 
