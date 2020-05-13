@@ -17,24 +17,25 @@ export class LocalStorageService {
 
   // updates the local storage with all recent searches
   update(item: LocalStorageItems, value: string): void {
-    if (localStorage.getItem(item) && !!value) {
+    const searchValue = value.toLowerCase();
+    if (localStorage.getItem(item) && !!searchValue) {
       const arr = JSON.parse(localStorage.getItem(item));
-      if (arr.includes(value)) {
-        const position = arr.indexOf(value);
+      if (arr.includes(searchValue)) {
+        const position = arr.indexOf(searchValue);
         arr.splice(position, 1);
       }
       if (arr.length < 5) {
-        arr.push(value);
+        arr.push(searchValue);
         localStorage.setItem(item, JSON.stringify(arr));
       } else {
         arr.shift();
-        arr.push(value);
+        arr.push(searchValue);
         localStorage.setItem(item, JSON.stringify(arr));
       }
-    } else if (!!value) {
+    } else if (!!searchValue) {
       this.create(item);
       const arrC = JSON.parse(localStorage.getItem(item));
-      arrC.push(value);
+      arrC.push(searchValue);
       localStorage.setItem(item, JSON.stringify(arrC));
     }
   }

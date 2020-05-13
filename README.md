@@ -17,11 +17,10 @@ A music search application where a user can search any album, artist, track. Thi
 * Last searched results will always be displayed on the home page.
 * If anything is not found like album or artist the app will redirect to page-not-found page.
 * Please find an assignment document in the root of the app to know more about the requirements, features and design.
-
-### New Features
-
 * State management implemented for Search Results, artists and albums.
 * Updated unit tests with state management implementation.
+* Caching HTTP Requests
+* Page not found if any artist/album is not returned by api.
 
 ### Technology
 
