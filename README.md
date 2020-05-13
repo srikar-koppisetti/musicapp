@@ -2,6 +2,8 @@
 
 A music search application where a user can search any album, artist, track. This application uses Apple iTunes API in order to fetch data.
 
+![](app.gif)
+
 ### Features
 
 * The user can search of any item like album, artist, track on the home page.
