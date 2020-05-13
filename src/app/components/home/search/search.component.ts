@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   private sub: Subscription;
   public dataLoading = false;
 
-  constructor(private apiService: ApiService, private localStorageSvc: LocalStorageService, private store: Store<fromApp.AppState>) { }
+  constructor(private localStorageSvc: LocalStorageService, private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
     this.getMostRecentSearch();

@@ -19,10 +19,14 @@ export class LocalStorageService {
   update(item: LocalStorageItems, value: string): void {
     if (localStorage.getItem(item) && !!value) {
       const arr = JSON.parse(localStorage.getItem(item));
-      if (arr.length < 5 && !arr.includes(value)) {
+      if (arr.includes(value)) {
+        const position = arr.indexOf(value);
+        arr.splice(position, 1);
+      }
+      if (arr.length < 5) {
         arr.push(value);
         localStorage.setItem(item, JSON.stringify(arr));
-      } else if (!arr.includes(value)) {
+      } else {
         arr.shift();
         arr.push(value);
         localStorage.setItem(item, JSON.stringify(arr));
